@@ -37,6 +37,10 @@ class Character:
     RANGE_VALUE_ATTACK = (1, 3)
     # Константа для диапазона очков защиты.
     RANGE_VALUE_DEFENCE = (1, 5)
+    # Константа для специального умения.
+    SPECIAL_SKILL = 'Удача'
+    # Константа для значение очков урона, для базового класса.
+    SPECIAL_BUFF = 15
 
     def __init__(self, name):
         self.name = name
@@ -56,7 +60,8 @@ class Character:
 
     def special(self):
         """Функция специального умения."""
-        ...
+        return (f'{self.name} применил специальное умение '
+                f'"{self.SPECIAL_SKILL} {self.SPECIAL_BUFF}".')
 
 
 class Warrior(Character):
