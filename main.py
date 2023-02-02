@@ -22,39 +22,50 @@ Warrior (воин), Mage (маг) и Healer (целитель).
 
 Классы Warrior, Mage и Healer будут наследниками класса Character.
 """
+# Импортируем функцию стандартного модуля random.
+from random import randint
+
+# Значение стандартной атаки присваиваем глобальной константе DEFAULT_ATTACK.
+DEFAULT_ATTACK = 5
 
 
 class Character:
-    """Базовый класс Персонаж"""
+    """Базовый класс Персонаж."""
+    # Константа для диапазона очков урона.
+    RANGE_VALUE_ATTACK = (1, 3)
+
     def __init__(self, name):
         self.name = name
 
     def attack(self):
-        """Функция атаки"""
-        ...
+        """Функция атаки."""
+        # Добавляем переменную value_attack для подсчёта очков урона/.
+        # # Оператор * распаковывает передаваемый кортеж.
+        value_attack = DEFAULT_ATTACK + randint(*self.RANGE_VALUE_ATTACK)
+        return (f'{self.name} нанёс противнику урон, равный {value_attack}')
 
     def defence(self):
-        """Функция защиты"""
+        """Функция защиты."""
         ...
 
     def special(self):
-        """Функция специального умения"""
+        """Функция специального умения."""
         ...
 
 
 class Warrior(Character):
-    """Дочерний класс Воин"""
+    """Дочерний класс Воин."""
     def __init__(self):
         ...
 
 
 class Mage(Character):
-    """Дочерний класс Маг"""
+    """Дочерний класс Маг."""
     def __init__(self):
         ...
 
 
 class Healer(Character):
-    """Дочерний класс Целитель"""
+    """Дочерний класс Целитель."""
     def __init__(self):
         ...
