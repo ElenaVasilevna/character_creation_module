@@ -29,6 +29,8 @@ from random import randint
 DEFAULT_ATTACK = 5
 # Значение стандартной защиты присваиваем глобальной константе DEFAULT_DEFENCE.
 DEFAULT_DEFENCE = 10
+# Значение выносливости
+DEFAULT_STAMINA = 80
 
 
 class Character:
@@ -39,8 +41,10 @@ class Character:
     RANGE_VALUE_DEFENCE = (1, 5)
     # Константа для специального умения.
     SPECIAL_SKILL = 'Удача'
-    # Константа для значение очков урона, для базового класса.
+    # Константа для значениея очков урона, для базового класса.
     SPECIAL_BUFF = 15
+    # Константа для описания класса персонажа.
+    BRIEF_DESC_CHAR_CLASS = 'отважный любитель приключений'
 
     def __init__(self, name):
         self.name = name
@@ -62,6 +66,10 @@ class Character:
         """Функция специального умения."""
         return (f'{self.name} применил специальное умение '
                 f'"{self.SPECIAL_SKILL} {self.SPECIAL_BUFF}".')
+
+    def __str__(self):
+        """Функция возвращающая имя и описание персонажа."""
+        return f'{self.__class__.__name__} - {self.BRIEF_DESC_CHAR_CLASS}.'
 
 
 class Warrior(Character):
