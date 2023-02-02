@@ -27,26 +27,32 @@ from random import randint
 
 # Значение стандартной атаки присваиваем глобальной константе DEFAULT_ATTACK.
 DEFAULT_ATTACK = 5
+# Значение стандартной защиты присваиваем глобальной константе DEFAULT_DEFENCE.
+DEFAULT_DEFENCE = 10
 
 
 class Character:
     """Базовый класс Персонаж."""
     # Константа для диапазона очков урона.
     RANGE_VALUE_ATTACK = (1, 3)
+    # Константа для диапазона очков защиты.
+    RANGE_VALUE_DEFENCE = (1, 5)
 
     def __init__(self, name):
         self.name = name
 
     def attack(self):
         """Функция атаки."""
-        # Добавляем переменную value_attack для подсчёта очков урона/.
+        # Добавляем переменную value_attack для подсчёта очков урона.
         # # Оператор * распаковывает передаваемый кортеж.
         value_attack = DEFAULT_ATTACK + randint(*self.RANGE_VALUE_ATTACK)
         return (f'{self.name} нанёс противнику урон, равный {value_attack}')
 
     def defence(self):
         """Функция защиты."""
-        ...
+        # Вычисляем значение защиты в переменной value_defence.
+        value_defence = DEFAULT_DEFENCE + randint(*self.RANGE_VALUE_DEFENCE)
+        return (f'{self.name} блокировал {value_defence} ед. урона.')
 
     def special(self):
         """Функция специального умения."""
