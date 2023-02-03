@@ -129,6 +129,33 @@ def choice_char_class(char_name: str) -> Character:
     return char_class
 
 
+def start_training(character: str) -> Character:
+    """Функция тренировки персонажа."""
+    # Добавляем словарь, в котором соотносится ввод пользователя
+    # и класс персонажа.
+    commands = {
+                'attack': character.attack,
+                'defence': character.defence,
+                'special': character.special
+    }
+
+    print('Потренируйся управлять своими навыками.')
+    print('Введи одну из команд: attack — чтобы атаковать противника, '
+          'defence — чтобы блокировать атаку противника или '
+          'special — чтобы использовать свою суперсилу.')
+    print('Если не хочешь тренироваться, введи команду skip.')
+
+    cmd = None
+    while cmd != 'skip':
+        # Ввод пользователя записывается в отдельную строковую переменную.
+        cmd = input('Введи команду: ')
+
+        if cmd in commands:
+            print(commands[cmd]())
+
+    return 'Тренировка окончена.'
+
+
 # Создан объект класса Воин.
 warrior = Warrior('Кодослав')
 print(warrior)
