@@ -82,9 +82,6 @@ class Warrior(Character):
     SPECIAL_BUFF = DEFAULT_STAMINA + 25
     SPECIAL_SKILL = 'Выносливость'
 
-    def __init__(self):
-        ...
-
 
 class Mage(Character):
     """Дочерний класс Маг."""
@@ -95,9 +92,6 @@ class Mage(Character):
     RANGE_VALUE_DEFENCE = (-2, 2)
     SPECIAL_BUFF = DEFAULT_ATTACK + 40
     SPECIAL_SKILL = 'Атака'
-
-    def __init__(self):
-        ...
 
 
 class Healer(Character):
@@ -110,8 +104,29 @@ class Healer(Character):
     SPECIAL_BUFF = DEFAULT_DEFENCE + 30
     SPECIAL_SKILL = 'Защита'
 
-    def __init__(self):
-        ...
+
+def choice_char_class(char_name: str) -> Character:
+    """Возвращает строку с выбранным классом персонажа."""
+    # Добавляем словарь, в котором соотносится ввод пользователя
+    # и класс персонажа.
+    game_classes = {'warrior': Warrior, 'mage': Mage, 'healer': Healer}
+
+    # Переменная принимающая значение одобрен выбор персонажа или нет.
+    approve_choice: str = None
+
+    while approve_choice != 'y':
+        # Ввод пользователя записывается в отдельную строковую переменную.
+        selected_class = input('Введи название персонажа, '
+                               'за которого хочешь играть: Воитель — warrior, '
+                               'Маг — mage, Лекарь — healer: ')
+        # Объект выбранного пользователем класса записывается в переменную.
+        char_class: Character = game_classes[selected_class](char_name)
+        # Вывели в терминал описание персонажа.
+        print(char_class)
+        approve_choice = input('Нажми (Y), чтобы подтвердить выбор, '
+                               'или любую другую кнопку, '
+                               'чтобы выбрать другого персонажа ').lower()
+    return char_class
 
 
 # Создан объект класса Воин.
